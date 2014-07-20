@@ -18,20 +18,24 @@ app.use '/vendor', express.static __dirname + '/bower_components'
 #app.use serveFavicon 'path to favico'
 app.use morgan 'dev'
 app.use bodyParser.json()
-app.use bodyParser.urlencoded()
+app.use bodyParser.urlencoded extended: true
 
 if app.get 'env' == 'development'
     app.use (err, req, res, next) ->
         res.status err.status || 500
         res.render 'error', { message: err.message, error: err }
 
+load 'models'
+	.into app
+
 load 'controllers'
-	.then 'routes'
-	.then 'models'
+	.into app
+
+load 'routes'
 	.into app
 
 mongoose = require 'mongoose'
 #global.db = mongoose.connect 'mongodb://localhost/digicom'
 
 server.listen 3000, ->
-	console.log 'Express server listening on port 3000'
+	console.log 'Digicom iniciada!'

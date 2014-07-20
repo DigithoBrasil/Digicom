@@ -17,8 +17,6 @@ module.exports = (app) ->
 			novoLancamento = organizador.criar new Date(),
 				lancamento.finalidade, lancamento.detalhesDaCompra, lancamento.valor
 
-			console.log novoLancamento
-
 			Lancamento.create novoLancamento, (erro, lancamento) ->
 				res.redirect '/' if erro
 				res.redirect '/lancamento'
