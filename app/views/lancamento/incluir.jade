@@ -1,0 +1,23 @@
+extends ../layout
+
+block content
+	h1 Lançamento de custos
+
+	form(method="post", action="/lancamento/salvar")
+		p
+			label(for="data") Data:
+			input(id="data", name="lancamento[data]")
+
+		p
+			label(for="finalidade") Finalidade: 
+			input(id="finalidade", name="lancamento[finalidade]")
+
+		p
+			label(for="detalhesDaCompra") Detalhes da compra: 
+			input(id="detalhesDaCompra", name="lancamento[detalhesDaCompra]")
+
+		p
+			label(for="valor") Valor: 
+			input(id="valor", name="lancamento[valor]")
+
+		input(type="submit", value="Salvar")

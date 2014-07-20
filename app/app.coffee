@@ -18,16 +18,16 @@ app.use '/vendor', express.static __dirname + '/bower_components'
 #app.use serveFavicon 'path to favico'
 app.use morgan 'dev'
 app.use bodyParser.json()
-#app.use bodyParser.urlencoded()
+app.use bodyParser.urlencoded()
 
-###if app.get 'env' == 'development'
+if app.get 'env' == 'development'
     app.use (err, req, res, next) ->
         res.status err.status || 500
-        res.render 'error', { message: err.message, error: err }###
+        res.render 'error', { message: err.message, error: err }
 
-load 'models'
-	.then 'controllers'
+load 'controllers'
 	.then 'routes'
+	.then 'models'
 	.into app
 
 mongoose = require 'mongoose'

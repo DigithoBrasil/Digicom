@@ -2,4 +2,5 @@ module.exports = (app) ->
 	lancamento = app.controllers.lancamento
 
 	app.get '/lancamento', lancamento.index
-	app.post '/lancamento/criar', lancamento.criar
+	app.get '/lancamento/incluir', lancamento.incluir
+	app.post '/lancamento/salvar', lancamento.salvar

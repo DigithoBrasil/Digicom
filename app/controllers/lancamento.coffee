@@ -4,5 +4,12 @@ module.exports = (app) ->
 		index: (req, res) ->
 			res.render 'lancamento/index'
 
-		criar: (req, res) ->
+		incluir: (req, res) ->
+			res.render 'lancamento/incluir'
+
+		salvar: (req, res) ->
+			lancamento = req.body.lancamento
+
+			# Salvar
+
 			res.render 'lancamento/index'
