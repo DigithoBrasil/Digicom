@@ -1,16 +1,23 @@
 {
-  "name": "DigiTransparencia",
-  "description": "Transparência Digicom",
+  "name": "Digicom",
+  "description": "Digicom",
   "version": "0.0.1",
-  "private": true,
   "scripts": {
     "start": "node app.js"
   },
+  "repository": {
+    "type": "tfs-git",
+    "url": "https://renansiravegna.visualstudio.com/DefaultCollection/_git/Digicom"
+  },
   "dependencies": {
+    "body-parser": "^1.4.3",
+    "debug": "^1.0.4",
     "express": "~4.6.1",
-    "jade": "~1.3.1",
     "express-load": "~1.1.14",
-    "mongoose": "~3.8.13"
+    "jade": "~1.3.1",
+    "mongoose": "~3.8.13",
+    "morgan": "^1.2.0",
+    "serve-favicon": "^2.0.1"
   },
   "devDependencies": {
     "coffee-script": "~1.7.1",

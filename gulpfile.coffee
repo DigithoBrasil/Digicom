@@ -7,8 +7,11 @@ mocha = require 'gulp-mocha'
 # mocha test/unit/models/pessoaTeste.coffee --compilers coffee:coffee-script/register
 
 gulp.task 'mocha-watch', ->
+	pastaTestes = 'test/**/*.coffee'
+	pastaModels = 'app/models/**/*.coffee'
+	
 	# ** procura em sub-folders
-	gulp.src 'test/**/*.coffee', read: false
+	gulp.src [pastaTestes, pastaModels], read: false
 		.pipe watch emit: 'all', (files) ->
 			files
 				.pipe mocha reporter: 'nyan'

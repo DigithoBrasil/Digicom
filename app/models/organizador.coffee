@@ -1,4 +1,5 @@
 Mongoose  = require 'mongoose'
+Lancamento = require '../models/lancamento'
 
 organizadorSchema = new Mongoose.Schema
 	nome: type: String, required: false
@@ -9,10 +10,7 @@ organizadorSchema.methods.lancar = (data, finalidade, detalhesDaCompra, valor) -
 	throw new Error 'Detalhes da compra devem ser informados' if not detalhesDaCompra
 	throw new Error 'Valor deve ser informado' if not valor
 
-	data: data
-	finalidade: finalidade
-	detalhesDaCompra: detalhesDaCompra
-	valor: valor
+	new Lancamento { data: data, finalidade: finalidade, detalhesDaCompra: detalhesDaCompra, valor: valor }
 
 Organizador = Mongoose.model 'Organizador', organizadorSchema
 
