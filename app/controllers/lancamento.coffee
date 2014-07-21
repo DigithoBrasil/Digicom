@@ -12,11 +12,16 @@ module.exports = (app) ->
 		salvar: (req, res) ->
 			lancamento = req.body.lancamento
 
+			console.log app.models
+			console.log app.models.organizador
+
 			organizador = new Organizador
 
-			novoLancamento = organizador.criar new Date(),
+			novoLancamento = organizador.criar new Date,
 				lancamento.finalidade, lancamento.detalhesDaCompra, lancamento.valor
 
-			Lancamento.create novoLancamento, (erro, lancamento) ->
+			console.log novoLancamento
+
+			###Lancamento.create novoLancamento, (erro, lancamento) ->
 				res.redirect '/' if erro
-				res.redirect '/lancamento'
+				res.redirect '/lancamento'###
