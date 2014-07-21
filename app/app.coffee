@@ -25,13 +25,12 @@ if app.get 'env' == 'development'
         res.status err.status || 500
         res.render 'error', { message: err.message, error: err }
 
-load 'models', verbose: true
-	.then 'controllers', verbose: true
+load 'controllers', verbose: true
 	.then 'routes', verbose: true
 	.into app
 
 mongoose = require 'mongoose'
-#global.db = mongoose.connect 'mongodb://localhost/digicom'
+global.db = mongoose.connect 'mongodb://localhost/digicom'
 
 server.listen 3000, ->
 	console.log 'Digicom iniciada!'

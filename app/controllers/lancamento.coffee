@@ -1,7 +1,8 @@
-module.exports = (app) ->
-	Organizador = app.models.organizador
-	Lancamento = app.models.lancamento
+Lancamento = require '../models/lancamento'
+Organizador = require '../models/organizador'
 
+module.exports = (app) ->
+	
 	LancamentoController =
 		index: (req, res) ->
 			res.render 'lancamento/index'
@@ -12,16 +13,14 @@ module.exports = (app) ->
 		salvar: (req, res) ->
 			lancamento = req.body.lancamento
 
-			console.log app.models
-			console.log app.models.organizador
-
 			organizador = new Organizador
 
-			novoLancamento = organizador.criar new Date,
+			novoLancamento = organizador.lancar new Date,
 				lancamento.finalidade, lancamento.detalhesDaCompra, lancamento.valor
 
-			console.log novoLancamento
+			novoLancamento.save (erro, teste) ->
+				if erro
+					console.log erro 
+					return
 
-			###Lancamento.create novoLancamento, (erro, lancamento) ->
-				res.redirect '/' if erro
-				res.redirect '/lancamento'###
+				res.redirect '/lancamento'
