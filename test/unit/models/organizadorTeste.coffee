@@ -12,8 +12,6 @@ describe 'Organizador', ->
 
 		lancamento = _organizador.lancar _data, _finalidade, _detalhesDaCompra, valor
 
-		console.log lancamento
-
 		lancamento.data.should.be.equal _data
 		lancamento.finalidade.should.be.equal _finalidade
 		lancamento.detalhesDaCompra.should.be.equal _detalhesDaCompra

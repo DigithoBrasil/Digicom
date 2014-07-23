@@ -6,7 +6,4 @@ lancamentoSchema = new Mongoose.Schema
 	detalhesDaCompra: type: String, required: true
 	valor: type: Number, required: true
 
-lancamentoSchema.methods.falar = ->
-	console.log 'Estou falando!!!' + @finalidade
-
 module.exports = Mongoose.model 'Lancamento', lancamentoSchema

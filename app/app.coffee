@@ -2,6 +2,7 @@ express = require 'express'
 serveFavicon = require 'serve-favicon'
 morgan = require 'morgan'
 bodyParser = require 'body-parser'
+moment = require 'moment'
 
 app = express()
 
@@ -25,12 +26,14 @@ if app.get 'env' == 'development'
         res.status err.status || 500
         res.render 'error', { message: err.message, error: err }
 
-load 'controllers', verbose: true
-	.then 'routes', verbose: true
+load './app/controllers', verbose: true
+	.then './app/routes', verbose: true
 	.into app
 
 mongoose = require 'mongoose'
 global.db = mongoose.connect 'mongodb://localhost/digicom'
+
+moment.lang 'pt-br'
 
 server.listen 3000, ->
 	console.log 'Digicom iniciada!'

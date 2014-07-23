@@ -2,20 +2,21 @@ gulp = require 'gulp'
 gutil = require 'gulp-util'
 watch = require 'gulp-watch'
 mocha = require 'gulp-mocha'
+nodemon = require 'gulp-nodemon'
 
-# Rodar coffe em console
-# mocha test/unit/models/pessoaTeste.coffee --compilers coffee:coffee-script/register
+_pastaDeTestes = 'test/**/*.coffee'
+_pastaDeModels = 'app/models/**/*.coffee'
 
 gulp.task 'mocha-watch', ->
-	pastaTestes = 'test/**/*.coffee'
-	pastaModels = 'app/models/**/*.coffee'
-	
-	# ** procura em sub-folders
-	gulp.src [pastaTestes, pastaModels], read: false
-		.pipe watch emit: 'all', (files) ->
-			files
-				.pipe mocha reporter: 'nyan'
-				.on 'error', (error) ->
-                    console.log error.stack if !/tests? failed/.test(error.stack)
+	gulp.watch [_pastaDeTestes, _pastaDeModels], ['mocha']
 
-gulp.task 'default', ['mocha-watch']
+gulp.task 'mocha', ->
+	gulp.src [_pastaDeTestes, _pastaDeModels], read: false
+		.pipe mocha reporter: 'nyan'
+		.on 'error', (error) ->
+			console.log error.stack if !/tests? failed/.test(error.stack)
+
+gulp.task 'nodemon', ->
+	nodemon script: 'app/app.coffee'
+
+gulp.task 'default', ['mocha-watch', 'nodemon']

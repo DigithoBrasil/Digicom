@@ -1,2 +1,3 @@
 node_modules/
-database/data
+app/bower_components/
+database/data/
