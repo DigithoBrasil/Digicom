@@ -1,6 +1,8 @@
 Natureza = require '../models/natureza'
 
-exports.calcular = (mesDeReferencia, lancamentos) ->
+exports.calcular = (lancamentos) ->
+
+	return 0 if not lancamentos or lancamentos.length == 0
 
 	somaDasReceitas = lancamentos
 		.map (lancamento) ->

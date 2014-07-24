@@ -6,15 +6,13 @@ calculoDeLancamentosDoMes = require '../../../app/models/calculoDeLancamentosDoM
 
 describe 'Cálculo de lançamentos do mês', ->
 
-	_mesDeReferencia = new Date 2014, 7, 1
-
 	it 'deve adicionar ao valor total quando for receita', ->
 		lancamentos = [
 			new Lancamento valor: 10, natureza: Natureza.receita
 			new Lancamento valor: 70, natureza: Natureza.receita
 		]
 
-		valor = calculoDeLancamentosDoMes.calcular _mesDeReferencia, lancamentos
+		valor = calculoDeLancamentosDoMes.calcular lancamentos
 
 		valor.should.be.equal 80
 
@@ -25,7 +23,7 @@ describe 'Cálculo de lançamentos do mês', ->
 			new Lancamento valor: 10, natureza: Natureza.despesa
 		]
 
-		valor = calculoDeLancamentosDoMes.calcular _mesDeReferencia, lancamentos
+		valor = calculoDeLancamentosDoMes.calcular lancamentos
 
 		valor.should.be.equal -40
 
@@ -37,7 +35,7 @@ describe 'Cálculo de lançamentos do mês', ->
 			new Lancamento valor: 10000
 		]
 
-		valor = calculoDeLancamentosDoMes.calcular _mesDeReferencia, lancamentos
+		valor = calculoDeLancamentosDoMes.calcular lancamentos
 
 		valor.should.be.equal 0
 
@@ -50,6 +48,16 @@ describe 'Cálculo de lançamentos do mês', ->
 			new Lancamento valor: 7.48, natureza: Natureza.despesa
 		]
 
-		valor = calculoDeLancamentosDoMes.calcular _mesDeReferencia, lancamentos
+		valor = calculoDeLancamentosDoMes.calcular lancamentos
 
 		valor.should.be.equal 151.56
+
+	it 'não deve calcular quando não houver lançamentos', ->
+
+		valor = calculoDeLancamentosDoMes.calcular []
+		outroValor = calculoDeLancamentosDoMes.calcular null
+		maisUmOutroValor = calculoDeLancamentosDoMes.calcular()
+
+		valor.should.be.equal 0
+		outroValor.should.be.equal 0
+		maisUmOutroValor.should.be.equal 0

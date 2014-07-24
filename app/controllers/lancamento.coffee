@@ -1,6 +1,8 @@
-Lancamento = require '../models/lancamento'
 Organizador = require '../models/organizador'
+Lancamento = require '../models/lancamento'
+
 moment = require 'moment'
+calculoDeLancamentosDoMes = require '../models/calculoDeLancamentosDoMes'
 
 module.exports = (app) ->
 
@@ -17,10 +19,12 @@ module.exports = (app) ->
 				console.log erro
 				return
 
+			caixaTotal = calculoDeLancamentosDoMes.calcular todosOsLancamentos
+
 			resultados = for lancamento in todosOsLancamentos
 				converterLancamento lancamento
 
-			res.render 'lancamento/index', lancamentos: resultados
+			res.render 'lancamento/index', { caixa: caixaTotal, lancamentos: resultados }
 
 	converterLancamento = (lancamento) ->
 		data: moment(lancamento.data).format 'DD/MM/YYYY'
@@ -50,7 +54,7 @@ module.exports = (app) ->
 
 			console.log data.toDate()
 
-			novoLancamento = (new Organizador()).lancar data.toDate(),
+			novoLancamento = (new Organizador()).lancar data.toDate(), lancamento.natureza,
 				lancamento.finalidade, lancamento.detalhesDaCompra, lancamento.valor
 
 			novoLancamento.save (erro, teste) ->

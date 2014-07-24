@@ -31,9 +31,20 @@ block content
 				td Valor
 
 		tbody
-			- each lancamento in lancamentos
-				tr
-					td= lancamento.data
-					td= lancamento.finalidade
-					td= lancamento.detalhesDaCompra
-					td= lancamento.valor
+			- if (lancamentos.length == 0)
+				td(colspan="4") Nenhum lançamento encontrado
+
+			-else
+				- each lancamento in lancamentos
+					tr
+						td= lancamento.data
+						td= lancamento.finalidade
+						td= lancamento.detalhesDaCompra
+						td= lancamento.valor
+
+		tfoot
+			tr
+				td
+				td
+				td Total
+				td= caixa
