@@ -17,7 +17,7 @@ app.set 'view engine', 'jade'
 app.use express.static __dirname + '/public'
 app.use '/vendor', express.static __dirname + '/bower_components'
 
-#app.use serveFavicon 'path to favico'
+##app.use serveFavicon 'path to favico'
 app.use morgan 'dev'
 app.use bodyParser.json()
 app.use bodyParser.urlencoded extended: true
