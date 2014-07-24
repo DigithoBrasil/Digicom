@@ -1,9 +1,12 @@
 {
+  "engines": {
+    "node": "0.10.x"
+  },
   "name": "Digicom",
   "description": "Digicom",
   "version": "0.0.1",
   "scripts": {
-    "start": "node app/server.js",
+    "start": "node server.js",
     "gulp-start": "gulp",
     "test": "gulp test"
   },
