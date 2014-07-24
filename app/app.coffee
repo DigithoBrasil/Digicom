@@ -40,5 +40,4 @@ else
 
 moment.lang 'pt-br'
 
-server.listen 3000, ->
-	console.log 'Digicom iniciada!'
+exports.application = app

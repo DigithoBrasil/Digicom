@@ -17,7 +17,7 @@ gulp.task 'mocha', ->
 			console.log error.stack if !/tests? failed/.test(error.stack)
 
 gulp.task 'nodemon', ->
-	nodemon script: 'app/server.coffee'
+	nodemon script: 'app/server.js'
 
 gulp.task 'test', ['mocha-watch']
 gulp.task 'default', ['nodemon']
