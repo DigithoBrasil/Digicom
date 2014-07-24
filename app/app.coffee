@@ -22,10 +22,10 @@ app.use morgan 'dev'
 app.use bodyParser.json()
 app.use bodyParser.urlencoded extended: true
 
-if app.get('env') == 'development'
-    app.use (err, req, res, next) ->
-        res.status err.status || 500
-        res.render 'error', { message: err.message, error: err }
+#if app.get('env') == 'development'
+app.use (err, req, res, next) ->
+    res.status err.status || 500
+    res.render 'error', { message: err.message, error: err }
 
 load './app/controllers', verbose: true
 	.then './app/routes', verbose: true
