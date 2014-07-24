@@ -3,7 +3,8 @@
   "description": "Digicom",
   "version": "0.0.1",
   "scripts": {
-    "start": "node app.js"
+    "start": "gulp",
+    "test": "gulp test"
   },
   "repository": {
     "type": "tfs-git",

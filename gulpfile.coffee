@@ -19,4 +19,5 @@ gulp.task 'mocha', ->
 gulp.task 'nodemon', ->
 	nodemon script: 'app/app.coffee'
 
-gulp.task 'default', ['mocha-watch', 'nodemon']
+gulp.task 'test', ['mocha-watch']
+gulp.task 'default', ['nodemon']
