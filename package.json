@@ -3,7 +3,8 @@
   "description": "Digicom",
   "version": "0.0.1",
   "scripts": {
-    "start": "gulp",
+    "start": "coffee app/server.coffee",
+    "gulp-start": "gulp",
     "test": "gulp test"
   },
   "repository": {
