@@ -33,10 +33,9 @@ exports.start = (cb) ->
 		.into app
 
 	if app.get('env') == 'development'
-		
-		global.db = mongoose.connect 'mongodb://DigicomMongo:1_UsFHmOdEV5nwP8b72CJLM_VPcGukOQ6Ch7puX_ioU-@ds050077.mongolab.com:50077/DigicomMongo'
-	else
 		global.db = mongoose.connect 'mongodb://localhost/digicom'
+	else
+		global.db = mongoose.connect 'mongodb://DigicomMongo:1_UsFHmOdEV5nwP8b72CJLM_VPcGukOQ6Ch7puX_ioU-@ds050077.mongolab.com:50077/DigicomMongo'
 		
 	moment.lang 'pt-br'
 
