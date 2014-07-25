@@ -1,5 +1,5 @@
 module.exports = (app) ->
-	lancamento = app.controllers.lancamento
+	lancamento = app.app.controllers.lancamento
 
 	app.get '/', lancamento.index
 	app.get '/home', lancamento.index

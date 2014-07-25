@@ -1,6 +1,4 @@
 var coffee = require('coffee-script/register');
-var app = require('./app/app.coffee');
+var app = require('./app/app');
 
-var port = process.env.PORT || 1337;
-
-app.application.listen(port);
+app.start();
