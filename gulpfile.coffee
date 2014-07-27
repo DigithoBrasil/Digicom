@@ -5,7 +5,7 @@ mocha = require 'gulp-mocha'
 nodemon = require 'gulp-nodemon'
 
 _pastaDeTestes = 'test/**/*.coffee'
-_pastaDeModels = 'app/models/**/*.coffee'
+_pastaDeModels = 'models/**/*.coffee'
 
 gulp.task 'mocha-watch', ->
 	gulp.watch [_pastaDeTestes, _pastaDeModels], ['mocha']
@@ -17,7 +17,9 @@ gulp.task 'mocha', ->
 			console.log error.stack if !/tests? failed/.test(error.stack)
 
 gulp.task 'nodemon', ->
-	nodemon script: 'app/server.js'
+	nodemon
+		script: 'server.js'
+		ext: '*.coffee'
 
 gulp.task 'test', ['mocha-watch']
 gulp.task 'default', ['nodemon']

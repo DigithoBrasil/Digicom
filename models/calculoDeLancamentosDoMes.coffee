@@ -2,18 +2,25 @@ Natureza = require '../models/natureza'
 
 exports.calcular = (lancamentos) ->
 
-	return 0 if not lancamentos or lancamentos.length == 0
+	caixa =
+		receita: 0
+		despesa: 0
+		total: 0
 
-	somaDasReceitas = lancamentos
+	return caixa if not lancamentos or lancamentos.length == 0
+
+	caixa.receita = lancamentos
 		.map (lancamento) ->
 			if lancamento.natureza == Natureza.receita then lancamento.valor else 0
 		.reduce (valor1, valor2) ->
 			valor1 + valor2
 
-	somaDasDespesas = lancamentos
+	caixa.despesa = lancamentos
 		.map (lancamento) ->
 			if lancamento.natureza == Natureza.despesa then lancamento.valor else 0
 		.reduce (valor1, valor2) ->
 			valor1 + valor2
 
-	somaDasReceitas - somaDasDespesas
+	caixa.total = caixa.receita - caixa.despesa
+
+	return caixa

@@ -2,36 +2,10 @@ Organizador = require '../models/organizador'
 Lancamento = require '../models/lancamento'
 
 moment = require 'moment'
-calculoDeLancamentosDoMes = require '../models/calculoDeLancamentosDoMes'
+consultaDeLancamentos = require '../application/query/consultaDeLancamentos'
 
 module.exports = (app) ->
 
-	consultar = (res, mes, ano) ->
-		data = new Date ano, mes, 1
-
-		filtro = data: {
-			$gte: data
-			$lt: moment(data).endOf('month').toDate()
-		}
-
-		Lancamento.find filtro, (erro, todosOsLancamentos) ->
-			if erro
-				console.log erro
-				return
-
-			caixaTotal = calculoDeLancamentosDoMes.calcular todosOsLancamentos
-
-			resultados = for lancamento in todosOsLancamentos
-				converterLancamento lancamento
-
-			res.render 'lancamento/index', { caixa: caixaTotal, lancamentos: resultados }
-
-	converterLancamento = (lancamento) ->
-		data: moment(lancamento.data).format 'DD/MM/YYYY'
-		finalidade: lancamento.finalidade
-		detalhesDaCompra: lancamento.detalhesDaCompra
-		valor: lancamento.valor
-	
 	LancamentoController =
 		index: (req, res) ->
 			mes = moment().month() + 1
@@ -40,10 +14,13 @@ module.exports = (app) ->
 			res.redirect "/lancamento/#{mes}/#{ano}"
 
 		consultar: (req, res) ->
-			mes = req.params.mes - 1
+			mes = req.params.mes
 			ano = req.params.ano
 
-			consultar res, mes, ano
+			exibirResultados = (resultados) ->
+				res.render 'lancamento/index', resultados
+
+			consultaDeLancamentos.consultar mes, ano, exibirResultados
 
 		incluir: (req, res) ->
 			res.render 'lancamento/incluir'

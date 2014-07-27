@@ -1,4 +1,4 @@
-exports.start = (cb) ->
+exports.start = ->
 	express = require 'express'
 	serveFavicon = require 'serve-favicon'
 	morgan = require 'morgan'
@@ -40,4 +40,4 @@ exports.start = (cb) ->
 	moment.lang 'pt-br'
 
 	port = process.env.PORT || 1337;
-	app.listen port, -> console.log 'Digicom iniciada.'
+	app.listen port, -> console.log 'Digicom iniciada @ ' + port

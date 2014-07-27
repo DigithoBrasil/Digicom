@@ -1,6 +1,6 @@
 should = require('chai').should()
-Natureza = require '../../../app/models/natureza'
-Organizador = require '../../../app/models/organizador'
+Natureza = require '../../../models/natureza'
+Organizador = require '../../../models/organizador'
 
 describe 'Organizador', ->
 	
