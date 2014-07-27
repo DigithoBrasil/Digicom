@@ -26,12 +26,10 @@ ConsultaDeLancamentos =
 			lancamentosViewModel = for lancamento in todosOsLancamentos
 				converterLancamento lancamento
 
+			caixa = calculoDeLancamentosDoMes.calcular todosOsLancamentos
+
 			resultado.lancamentos = lancamentosViewModel
-			resultado.caixa = calculoDeLancamentosDoMes.calcular todosOsLancamentos
-
-			oi = calculoDeLancamentosDoMes.calcular todosOsLancamentos
-
-			console.log oi
+			resultado.caixa = converterCaixa caixa
 
 			cb.apply @, [resultado]
 
@@ -39,6 +37,14 @@ converterLancamento = (lancamento) ->
 	data: moment(lancamento.data).format 'DD/MM/YYYY'
 	finalidade: lancamento.finalidade
 	detalhesDaCompra: lancamento.detalhesDaCompra
-	valor: lancamento.valor
+	valor: formatarNumero lancamento.valor
+
+converterCaixa = (caixa) ->
+	receita: formatarNumero caixa.receita
+	despesa: formatarNumero caixa.despesa
+	total: formatarNumero caixa.total
+
+formatarNumero = (numero) ->
+	"R$ #{numero.toFixed(2)}"
 
 module.exports = ConsultaDeLancamentos

@@ -35,12 +35,6 @@ describe 'Organizador', ->
 
 		testMethod.should.throw /Finalidade deve ser informada/
 
-	it 'não deve lançar sem detalhes da compra', ->
-		testMethod = ->
-			_organizador.lancar _data, _natureza, _finalidade
-
-		testMethod.should.throw /Detalhes da compra devem ser informados/
-
 	it 'não deve lançar sem valor', ->
 		testMethod = ->
 			_organizador.lancar _data, _natureza, _finalidade, _detalhesDaCompra

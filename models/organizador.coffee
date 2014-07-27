@@ -8,7 +8,6 @@ organizadorSchema.methods.lancar = (data, natureza, finalidade, detalhesDaCompra
 	throw new Error 'Data deve ser informada' if not data
 	throw new Error 'Natureza deve ser informada' if not natureza
 	throw new Error 'Finalidade deve ser informada' if not finalidade
-	throw new Error 'Detalhes da compra devem ser informados' if not detalhesDaCompra
 	throw new Error 'Valor deve ser informado' if not valor
 
 	new Lancamento { data: data, natureza: natureza, finalidade: finalidade, detalhesDaCompra: detalhesDaCompra, valor: valor }
