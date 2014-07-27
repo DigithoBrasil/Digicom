@@ -28,15 +28,15 @@ block content
 						td= lancamento.data
 						td= lancamento.finalidade
 						td= lancamento.detalhesDaCompra
-						td= lancamento.valor
+						td(class=lancamento.natureza == "Receita" ? "receita" : "despesa")= lancamento.valor
 
 		tfoot
 			tr
 				td(colspan="3") Receita
-				td= caixa.receita
+				td(class="receita")= caixa.receita
 			tr
 				td(colspan="3") Despesa
-				td= caixa.despesa
+				td(class="despesa")= caixa.despesa
 			tr
 				td(colspan="3") Total
 				td= caixa.total

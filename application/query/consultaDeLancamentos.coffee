@@ -35,6 +35,7 @@ ConsultaDeLancamentos =
 
 converterLancamento = (lancamento) ->
 	data: moment(lancamento.data).format 'DD/MM/YYYY'
+	natureza: lancamento.natureza
 	finalidade: lancamento.finalidade
 	detalhesDaCompra: lancamento.detalhesDaCompra
 	valor: formatarNumero lancamento.valor
@@ -45,6 +46,10 @@ converterCaixa = (caixa) ->
 	total: formatarNumero caixa.total
 
 formatarNumero = (numero) ->
-	"R$ #{numero.toFixed(2)}"
+	numeroFormatado = numero
+		.toFixed 2
+		.replace ".", ","
+
+	"R$ #{numeroFormatado}"
 
 module.exports = ConsultaDeLancamentos
