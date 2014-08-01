@@ -5,6 +5,9 @@ exports.start = ->
 	bodyParser = require 'body-parser'
 	mongoose = require 'mongoose'
 	moment = require 'moment'
+	passport = require 'passport'
+	session = require 'express-session'
+	flash = require 'connect-flash'
 
 	app = express()
 
@@ -22,6 +25,13 @@ exports.start = ->
 	app.use morgan 'dev'
 	app.use bodyParser.json()
 	app.use bodyParser.urlencoded extended: true
+
+	app.use session secret: 'a6d7b66b15077f4cd2291298c6719b8d' # 'digicom' em md5
+	app.use passport.initialize()
+	app.use passport.session()
+	app.use flash()
+
+	app.passport = passport
 
 	if app.get('env') == 'development'
 		app.use (err, req, res, next) ->

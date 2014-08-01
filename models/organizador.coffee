@@ -3,6 +3,8 @@ Lancamento = require '../models/lancamento'
 
 organizadorSchema = new Mongoose.Schema
 	nome: type: String, required: false
+	login: type: String, required: true
+	senha: type: String, required: true
 
 organizadorSchema.methods.lancar = (data, natureza, finalidade, detalhesDaCompra, valor) ->
 	throw new Error 'Data deve ser informada' if not data

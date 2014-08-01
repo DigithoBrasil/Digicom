@@ -1,0 +1,15 @@
+extends ../layout
+
+block content
+	h1 Lançamento de custos
+
+	form(method="post", action="/logon")
+		p
+			label(for="login") Login:
+			input(id="login", name="logon[login]", required)
+
+		p
+			label(for="Senha") Senha:
+			input(id="Senha", type="password", name="logon[Senha]", required)
+
+		input(type="submit", value="Salvar")
