@@ -1,42 +1,53 @@
 extends ../layout
 
 block content
-	p
-		a(href="/lancamento/incluir") Incluir
+	div.navegacao.left(onclick="window.location = '" + consultaAnterior + "'")
+		span.icon-arrow-left
 
-	p
-		a(href=consultaAnterior) < Anterior
+	div.navegacao.right(onclick="window.location = '" + proximaConsulta + "'")
+		span.icon-arrow-right
 
-	p
-		a(href=proximaConsulta) Próximo >
+	div.conteudo.center
+		h1= titulo
 
-	table
-		thead
-			tr
-				td Data
-				td Finalidade
-				td Detalhes da compra
-				td Valor
+		table(cellpadding="0", cellspacing="0")
+			thead
+				tr
+					td
+						span.icon-calendar.
+						| DATA
+					td
+						span.icon-attachment
+						| NF/CF/RECIBO
+					td
+						span.icon-pencil
+						| DESCRIÇÃO
+					td
+						span.icon-coins
+						| VALOR
 
-		tbody
-			- if (lancamentos.length == 0)
-				td(colspan="4") Nenhum lançamento encontrado
+			tbody
+				- if (lancamentos.length == 0)
+					td(colspan="4") Nenhum lançamento encontrado
 
-			-else
-				- each lancamento in lancamentos
-					tr
-						td= lancamento.data
-						td= lancamento.finalidade
-						td= lancamento.detalhesDaCompra
-						td(class=lancamento.natureza == "Receita" ? "receita" : "despesa")= lancamento.valor
+				-else
+					- each lancamento in lancamentos
+						tr
+							td= lancamento.data
+							td= lancamento.finalidade
+							td= lancamento.detalhesDaCompra
+							td(class=lancamento.natureza == "Receita" ? "credito" : "debito")= lancamento.valor
 
-		tfoot
-			tr
-				td(colspan="3") Receita
-				td(class="receita")= caixa.receita
-			tr
-				td(colspan="3") Despesa
-				td(class="despesa")= caixa.despesa
-			tr
-				td(colspan="3") Total
-				td= caixa.total
+			tfoot
+				tr
+					td
+					td
+					td
+					td Débito
+						span.resultado= caixa.despesa
+				tr
+					td
+					td
+					td
+					td Saldo
+						span.resultado= caixa.receita

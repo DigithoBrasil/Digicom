@@ -14,7 +14,10 @@ ConsultaDeLancamentos =
 			$lt: moment(data).endOf('month').toDate()
 		}
 
+		titulo = "#{moment(data).format('MMMM')} de #{moment(data).format('YYYY')}"
+
 		resultado =
+			titulo: titulo.charAt(0).toUpperCase() + titulo.slice(1)
 			consultaAnterior: "/lancamento/#{mesAnterior.month() + 1}/#{mesAnterior.year()}"
 			proximaConsulta: "/lancamento/#{proximoMes.month() + 1}/#{proximoMes.year()}"
 

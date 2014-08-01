@@ -1,0 +1,182 @@
+
+
+@import	url("font.less");
+
+
+/* CORES */
+@background: #EEEEEE;
+@backgroundTbody: #F8F8F8;
+@BackgroundResultado: #f2b082;
+@corPrincipal: #f5883a;
+
+@backgroundClaro: #FFFFFF;
+@textoPadrao: #000000;
+@textoClaro: #FFFFFF;
+@textoCorPrincipal: @corPrincipal;
+@corTextoDebito: #e61b23;
+@corTextoCredito: #184faa;
+
+
+
+/* MIXINS */
+.textoTitulo(@tamanho:22px, @cor: @corPrincipal){
+	font-family: Arial, Helvetica, Sans-Serif;
+	font-size: @tamanho;
+	color: @cor;
+}
+.textoPadrao(@tamanho: 14px, @cor: @textoPadrao){
+	font-family: Arial, Helvetica, Sans-Serif;
+	font-size: @tamanho;
+	color: @cor;
+}
+.textoFooter(@tamanho: 14px, @cor: @textoPadrao){
+	font-family: Arial, Helvetica, Sans-Serif;
+	font-size: @tamanho;
+	color: @cor;
+}
+
+
+
+/* FORMATACAO */
+*{
+	.textoPadrao(14px);
+}
+
+html,
+body{
+	background: @background;
+	color: @textoPadrao;
+
+	margin: 0;
+    padding: 0;
+    height: 100%;
+}
+
+
+.logo{
+	text-align: center;
+	padding: 25px 0;
+}
+.master {
+    position: relative;
+    width: 100%;
+    min-height: 100%;
+}
+.center{
+	margin: 0 auto;
+	width: 100%;
+	max-width: 1200px;
+	min-width: 990px; 
+}
+.debito{
+	color: @corTextoDebito;
+}
+.credito{
+	color: @corTextoCredito;
+}
+
+.navegacao{
+	cursor: pointer;
+	width: 40px;
+	height: 150px;
+	position: absolute;
+	top: 50%;
+	margin-top: -75px;
+	background: fade(@corPrincipal, 20%);
+
+	span{
+		width: 30px;
+		height: 30px;
+		top: 50%;
+		position: absolute;
+		margin-top: -15px;
+		color:@corPrincipal;
+		font-size: 35px;
+	}
+}
+
+.right{	right: 0; }
+.left{ left: 0; }
+
+
+h1{
+	.textoTitulo(24px);
+	text-align: center;
+}
+
+table{
+	width: 100%;
+
+	thead{
+		background-color: @corPrincipal;
+
+		tr{
+
+			td{
+				.textoPadrao(16px, @textoClaro);
+				padding: 6px;
+				text-align: center;
+				span{
+					margin: 0 5px;
+					.textoPadrao(18px, @textoClaro);
+				}
+				&:nth-child(3){
+					width: 500px;
+				}
+			}
+
+		}
+	}
+	tbody{
+		text-align: center;
+
+		tr{
+			border-top: solid 1px red;
+			background-color: @backgroundTbody;
+
+			&:hover{ background-color: @backgroundClaro; }
+
+			td{
+				.textoPadrao();
+				padding: 12px;
+				&:last-child{
+					text-align:right;
+					font-weight: bold;
+				}
+			}
+
+		}
+	}
+	tfoot{
+		tr{
+			td{
+				padding: 5px;
+				position: relative;
+				
+				.resultado{
+					position: absolute;
+					right: 5px;
+					.textoPadrao(17px, @textoClaro);
+				}
+
+				&:last-child{
+					background-color: @BackgroundResultado;
+					text-align: left;
+					.textoPadrao(17px, @textoClaro);
+				}
+			}
+		}
+	}
+}
+
+.footer{
+	background-color: @corPrincipal;
+	padding: 20px 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+
+    .conteudo{
+		.textoFooter(14px, @textoClaro);
+    }
+}
