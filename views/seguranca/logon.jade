@@ -6,10 +6,10 @@ block content
 	form(method="post", action="/logon")
 		p
 			label(for="login") Login:
-			input(id="login", name="logon[login]", required)
+			input(id="login", name="email", required)
 
 		p
 			label(for="Senha") Senha:
-			input(id="Senha", type="password", name="logon[Senha]", required)
+			input(id="Senha", type="password", name="password", required)
 
 		input(type="submit", value="Salvar")
