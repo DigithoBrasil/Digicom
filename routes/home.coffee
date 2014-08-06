@@ -1,6 +1,4 @@
 module.exports = (app) ->
-	home = app.controllers.home
+	lancamento = app.controllers.lancamento
 
-	app.get '/login', home.login
-	###app.post '/logon', home.logon
-	app.get '/logout', home.logout###
+	app.get '/', lancamento.index

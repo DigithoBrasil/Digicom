@@ -29,15 +29,11 @@ module.exports = (app) ->
 			lancamento = req.body.lancamento
 			data = moment lancamento.data
 
-			console.log data.toDate()
+			Organizador.findOne login: req.session.loginOrganizador, (erro, organizador) ->
+				novoLancamento = organizador.lancar data.toDate(), lancamento.natureza,
+					lancamento.finalidade, lancamento.detalhesDaCompra, lancamento.valor
 
-			novoLancamento = (new Organizador()).lancar data.toDate(), lancamento.natureza,
-				lancamento.finalidade, lancamento.detalhesDaCompra, lancamento.valor
+				novoLancamento.save (erro) ->
+					throw erro if erro
 
-			novoLancamento.save (erro, teste) ->
-				if erro
-					console.log erro 
 					res.redirect '/lancamento'
-					return
-
-				res.redirect '/lancamento'

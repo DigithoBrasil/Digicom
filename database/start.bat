@@ -1,1 +1,1 @@
-"C:\Program Files\MongoDB 2.6 Standard\bin\mongod.exe" --dbpath "C:\Projetos\Digicom\database\data"
+"C:\Program Files\MongoDB 2.6 Standard\bin\mongod.exe" --dbpath "F:\Projetos\Digicom\database\data"

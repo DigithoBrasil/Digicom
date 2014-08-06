@@ -1,0 +1,35 @@
+@font-face {
+  font-family: icomoon;
+  src: url(../font/icomoon.eot?-xm0fo);
+  src: url(../font/icomoon.eot?#iefix-xm0fo) format("embedded-opentype"), url(../font/icomoon.woff?-xm0fo) format("woff"), url(../font/icomoon.ttf?-xm0fo) format("truetype"), url(../font/icomoon.svg?-xm0fo#icomoon) format("svg");
+  font-weight: 400;
+  font-style: normal; }
+
+[class^=icon-], [class*=" icon-"] {
+  font-family: icomoon;
+  speak: none;
+  font-style: normal;
+  font-weight: 400;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale; }
+
+.icon-calendar:before {
+  content: "\e600"; }
+
+.icon-attachment:before {
+  content: "\e601"; }
+
+.icon-pencil:before {
+  content: "\e602"; }
+
+.icon-coins:before {
+  content: "\e603"; }
+
+.icon-arrow-left:before {
+  content: "\e604"; }
+
+.icon-arrow-right:before {
+  content: "\e605"; }
