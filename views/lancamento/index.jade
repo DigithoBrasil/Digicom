@@ -7,10 +7,10 @@ block content
 	div.navegacao.right(onclick="window.location = '" + proximaConsulta + "'")
 		span.icon-arrow-right
 
-	a(href="/lancamento/incluir") Incluir
-
 	div.conteudo.center
 		h1= titulo
+
+		input(type="button", onclick="window.location = '/lancamento/incluir'", value="Incluir")
 
 		table(cellpadding="0", cellspacing="0")
 			thead

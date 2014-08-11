@@ -54,6 +54,27 @@ html, body {
   position: relative;
   width: 100%;
   min-height: 100%; }
+  .master div.conteudo form p label {
+    text-align: right;
+    display: inline-block;
+    width: 10em;
+    margin: 0 1em 0 0; }
+  .master div.conteudo form p input[type="text"], .master div.conteudo form p input[type="date"], .master div.conteudo form p input[type="number"], .master div.conteudo form p input[type="password"], .master div.conteudo form p select {
+    padding: 0.5em 0.6em;
+    display: inline-block;
+    border: 1px solid #ccc; }
+  .master input[type="submit"], .master input[type="button"] {
+    padding: 0.5em 1em;
+    border: 0 rgba(0, 0, 0, 0);
+    border-radius: 2px;
+    margin-bottom: 2em;
+    background-color: #f5883a;
+    color: #fff;
+    display: block;
+    cursor: pointer; }
+  .master input[type="button"] {
+    margin-bottom: 0.5em;
+    float: right; }
 
 .center {
   margin: 0 auto;
