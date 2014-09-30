@@ -1,3 +1,4 @@
+accounting = require 'accounting'
 Lancamento = require '../../models/lancamento'
 
 moment = require 'moment'
@@ -49,10 +50,6 @@ converterCaixa = (caixa) ->
 	total: formatarNumero caixa.total
 
 formatarNumero = (numero) ->
-	numeroFormatado = numero
-		.toFixed 2
-		.replace ".", ","
-
-	"R$ #{numeroFormatado}"
+	accounting.formatMoney numero, 'R$ ', 2, '.', ','
 
 module.exports = ConsultaDeLancamentos
