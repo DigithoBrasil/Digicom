@@ -10,7 +10,7 @@ describe 'Organizador', ->
 	_detalhesDaCompra = '2x Fones de ouvido Multilaser'
 	_finalidade = 'Presentes'
 
-	it 'deve lançar um gasto', ->
+	it 'deve realizar um lançamento', ->
 		valor = 150.00
 
 		lancamento = _organizador.lancar _data, _natureza, _finalidade, _detalhesDaCompra, valor

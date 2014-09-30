@@ -149,15 +149,23 @@ table {
         table tbody tr td:last-child {
           text-align: right;
           font-weight: 700; }
+  table tfoot tr td.descricao {
+    background-color: #f2b082;
+    text-align: left;
+    font-family: Arial, Helvetica, Sans-Serif;
+    font-size: 17px;
+    color: #fff;
+    float: right;
+    width: 100px; }
   table tfoot tr td {
     padding: 5px;
     position: relative; }
     table tfoot tr td .resultado {
-      position: absolute;
-      right: 5px;
+      float: right;
       font-family: Arial, Helvetica, Sans-Serif;
       font-size: 17px;
-      color: #fff; }
+      color: #fff;
+      display: inline-block; }
     table tfoot tr td:last-child {
       background-color: #f2b082;
       text-align: left;

@@ -151,16 +151,28 @@ table {
       }
     }
   }
+
+  tfoot tr td.descricao {
+      background-color: #f2b082;
+      text-align: left;
+      font-family: Arial,Helvetica,Sans-Serif;
+      font-size: 17px;
+      color: #fff;
+      float: right;
+      width: 100px;
+  }
+
   tfoot tr td {
     padding: 5px;
     position: relative;
     .resultado {
-      position: absolute;
-      right: 5px;
+      float: right;
       font-family: Arial,Helvetica,Sans-Serif;
       font-size: 17px;
       color: #fff;
+      display: inline-block;
     }
+
     &:last-child {
       background-color: #f2b082;
       text-align: left;
