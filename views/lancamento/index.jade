@@ -1,0 +1,68 @@
+extends ../layout
+
+block content
+	div.navegacao.left(onclick="window.location = '" + consultaAnterior + "'")
+		span.icon-arrow-left
+
+	div.navegacao.right(onclick="window.location = '" + proximaConsulta + "'")
+		span.icon-arrow-right
+
+	div.conteudo.center
+		h1= titulo
+
+		input(type="button", onclick="window.location = '/lancamento/incluir'", value="Incluir")
+
+		table(cellpadding="0", cellspacing="0")
+			thead
+				tr
+					td
+						span.icon-calendar.
+						| DATA
+					td
+						span.icon-calendar.
+						| COMPROVANTE
+					td
+						span.icon-calendar.
+						| FORNECEDOR
+					td
+						span.icon-calendar.
+						| DETALHES
+					td
+						span.icon-coins
+						| VALOR
+
+			tbody
+				- if (lancamentos.length == 0)
+					td(colspan="4") Nenhum lançamento encontrado
+
+				-else
+					- each lancamento in lancamentos
+						tr
+							td= lancamento.data
+							td= lancamento.comprovante
+							td= lancamento.fornecedor
+							td= lancamento.detalhes
+							td(class=lancamento.natureza == "Crédito" ? "credito" : "debito")= lancamento.valor
+
+			tfoot
+				tr
+					td
+					td
+					td
+					td.descricao Crédito
+					td
+						span.resultado= caixa.credito
+				tr
+					td
+					td
+					td
+					td.descricao Débito
+					td
+						span.resultado= caixa.debito
+				tr
+					td
+					td
+					td
+					td.descricao Saldo
+					td
+						span.resultado= caixa.total

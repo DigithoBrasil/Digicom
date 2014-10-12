@@ -1,0 +1,60 @@
+extends ../layout
+
+block content
+	h1 Lançamentos
+
+	div.conteudo.center
+		form(method="post", action="/lancamento/salvar")
+			p
+				label(for="data") Data:
+				input(id="data", type="date", name="lancamento[data]", required)
+
+			p
+				label(for="natureza") Natureza:
+				select(id="natureza", name="lancamento[natureza]", required)
+					option(selected="selected", value="")
+					option(value="Crédito") Crédito
+					option(value="Débito") Débito
+
+			p.esconder
+				label(for="comprovante") Comprovante:
+				select(id="comprovante", name="lancamento[comprovante]")
+					option(selected="selected", value="")
+					option(value="Nota Fiscal") Nota Fiscal
+					option(value="Cupom Fiscal") Cupom Fiscal
+					option(value="Recibo") Recibo
+
+			p.esconder
+				label(for="fornecedor") Fornecedor: 
+				input(id="fornecedor", type="text", name="lancamento[fornecedor]")
+
+			p.esconder
+				label(for="detalhes") Detalhes da compra: 
+				input(id="detalhes", type="text", name="lancamento[detalhes]")
+
+			p.esconder
+				label(for="valor") Valor: 
+				input(id="valor", type="number", min="0.01", step="0.01", max="10000", name="lancamento[valor]")
+
+			input(type="submit", value="Salvar")
+			a(href="/lancamento") < Voltar
+
+	script(type="text/javascript", src="/vendor/jquery/dist/jquery.js").
+
+	script(type="text/javascript").
+		$('#natureza').on('change', function() {
+			$('p.esconder').hide();
+			$('#comprovante, #fornecedor, #detalhes, #valor').removeAttr('required', 'required');
+
+			var natureza = this.value;
+
+			if (natureza == 'Débito') {
+				$('p.esconder').show();
+				$('#comprovante, #fornecedor, #detalhes, #valor').attr('required', 'required');
+			}
+
+			if (natureza == 'Crédito') {
+				$('p.esconder').filter(function() { return $(this).find('#detalhes, #valor').length > 0; }).show();
+				$('#detalhes, #valor').attr('required', 'required');
+			}
+		});
