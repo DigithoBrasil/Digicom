@@ -38,7 +38,7 @@ module.exports = (app) ->
 				novoLancamento.save (erro) ->
 					throw erro if erro
 
-					res.redirect '/lancamento'
+					res.redirect "/lancamento/#{mes}/#{ano}"
 
 		salvarCredito: (req, res) ->
 			lancamento = req.body.lancamento
@@ -52,4 +52,4 @@ module.exports = (app) ->
 				novoLancamento.save (erro) ->
 					throw erro if erro
 
-					res.redirect '/lancamento'
+					res.redirect "/lancamento/#{mes}/#{ano}"
