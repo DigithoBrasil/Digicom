@@ -2,9 +2,6 @@
 logs
 *.log
 
-# Generated stylesheet files
-public/css/*.css
-
 # MongoDB database files
 database/
 
