@@ -2,6 +2,9 @@
 logs
 *.log
 
+# MongoDB database files
+database/
+
 # Confidential docs
 *.xlsx
 *.xlsx#
