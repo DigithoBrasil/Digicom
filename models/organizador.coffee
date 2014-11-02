@@ -1,6 +1,7 @@
 Mongoose  = require 'mongoose'
 Natureza = require '../models/natureza'
 Lancamento = require '../models/lancamento'
+moment = require 'moment'
 
 bcrypt = require 'bcrypt-nodejs'
 SALT_WORK_FACTOR = 10
@@ -31,25 +32,27 @@ organizadorSchema.methods.validarSenha = (senha, cb) ->
 
 		cb null, isMatch
 
-organizadorSchema.methods.lancarCredito = (data, detalhes, valor) ->
-	throw new Error 'Data deve ser informada' if not data
+organizadorSchema.methods.lancarCredito = (mes, ano, detalhes, valor) ->
+	throw new Error 'Mês deve ser informado' if not mes
+	throw new Error 'Ano deve ser informado' if not ano
 	throw new Error 'Detalhes devem ser informados' if not detalhes
 	throw new Error 'Valor deve ser informado' if not valor
 
 	new Lancamento
-		data: data
+		data: moment year: ano, month: mes - 1, day: 1
 		natureza: Natureza.credito
 		detalhes: detalhes
 		valor: valor
 
-organizadorSchema.methods.lancarDebito = (data, comprovante, fornecedor, detalhes, valor) ->
-	throw new Error 'Data deve ser informada' if not data
+organizadorSchema.methods.lancarDebito = (mes, ano, comprovante, fornecedor, detalhes, valor) ->
+	throw new Error 'Mês deve ser informado' if not mes
+	throw new Error 'Ano deve ser informado' if not ano
 	throw new Error 'Comprovante deve ser informado' if not comprovante
 	throw new Error 'Fornecedor deve ser informado' if not fornecedor
 	throw new Error 'Valor deve ser informado' if not valor
 
 	new Lancamento
-		data: data
+		data: moment year: ano, month: mes - 1, day: 1
 		natureza: Natureza.debito
 		comprovante: comprovante
 		fornecedor: fornecedor

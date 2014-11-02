@@ -20,7 +20,7 @@ module.exports = (app) ->
 						return
 
 					req.session.loginOrganizador = organizador.login
-					res.redirect '/lancamento/incluir'
+					res.redirect '/lancamento'
 
 		logout: (req, res) ->
 			delete req.session.loginOrganizador

@@ -18,6 +18,8 @@ ConsultaDeLancamentos =
 		titulo = "#{moment(data).format('MMMM')} de #{moment(data).format('YYYY')}"
 
 		resultado =
+			ano: ano
+			mes: mes
 			titulo: titulo.charAt(0).toUpperCase() + titulo.slice(1)
 			consultaAnterior: "/lancamento/#{mesAnterior.month() + 1}/#{mesAnterior.year()}"
 			proximaConsulta: "/lancamento/#{proximoMes.month() + 1}/#{proximoMes.year()}"
@@ -38,7 +40,7 @@ ConsultaDeLancamentos =
 			cb.apply @, [resultado]
 
 converterLancamento = (lancamento) ->
-	data: moment(lancamento.data).format 'DD/MM/YYYY'
+	data: moment(lancamento.data).format 'MM/YYYY'
 	natureza: lancamento.natureza
 	comprovante: if lancamento.comprovante then lancamento.comprovante else '---'
 	fornecedor: if lancamento.fornecedor then lancamento.fornecedor else '---'
