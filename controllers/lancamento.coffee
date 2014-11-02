@@ -3,7 +3,7 @@ Lancamento = require '../models/lancamento'
 Natureza = require '../models/natureza'
 
 moment = require 'moment'
-consultaDeLancamentos = require '../application/query/consultaDeLancamentos'
+consultaDeLancamentos = require '../api/query/consultaDeLancamentos'
 
 module.exports = (app) ->
 

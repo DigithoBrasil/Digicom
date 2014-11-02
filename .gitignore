@@ -2,6 +2,10 @@
 logs
 *.log
 
+# Confidential docs
+*.xlsx
+*.xlsx#
+
 # Runtime data
 pids
 *.pid
