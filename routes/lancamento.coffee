@@ -6,4 +6,5 @@ module.exports = (app) ->
 	app.get '/lancamento', lancamento.index	
 	app.get '/lancamento/:mes/:ano', lancamento.consultar
 
-	app.post '/lancamento/salvar', autenticacao.verificar, lancamento.salvar
+	app.post '/lancamento/salvarDebito', autenticacao.verificar, lancamento.salvarDebito
+	app.post '/lancamento/salvarCredito', autenticacao.verificar, lancamento.salvarCredito

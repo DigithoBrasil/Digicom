@@ -1,7 +1,6 @@
 Mongoose  = require 'mongoose'
 Natureza = require '../models/natureza'
 Lancamento = require '../models/lancamento'
-moment = require 'moment'
 
 bcrypt = require 'bcrypt-nodejs'
 SALT_WORK_FACTOR = 10
@@ -39,7 +38,7 @@ organizadorSchema.methods.lancarCredito = (mes, ano, detalhes, valor) ->
 	throw new Error 'Valor deve ser informado' if not valor
 
 	new Lancamento
-		data: moment year: ano, month: mes - 1, day: 1
+		data: new Date ano, mes - 1, 1
 		natureza: Natureza.credito
 		detalhes: detalhes
 		valor: valor
@@ -52,7 +51,7 @@ organizadorSchema.methods.lancarDebito = (mes, ano, comprovante, fornecedor, det
 	throw new Error 'Valor deve ser informado' if not valor
 
 	new Lancamento
-		data: moment year: ano, month: mes - 1, day: 1
+		data: new Date ano, mes - 1, 1
 		natureza: Natureza.debito
 		comprovante: comprovante
 		fornecedor: fornecedor

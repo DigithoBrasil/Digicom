@@ -26,23 +26,28 @@ module.exports = (app) ->
 
 			consultaDeLancamentos.consultar mes, ano, exibirResultados
 
-		salvar: (req, res) ->
+		salvarDebito: (req, res) ->
 			lancamento = req.body.lancamento
 			mes = lancamento.mes
 			ano = lancamento.ano
 
 			Organizador.findOne login: req.session.loginOrganizador, (erro, organizador) ->
-				novoLancamento
+				novoLancamento = organizador.lancarDebito mes, ano, lancamento.comprovante,
+					lancamento.fornecedor, lancamento.detalhes, lancamento.valor
 
-				if lancamento.natureza == Natureza.credito
-					novoLancamento = organizador.lancarCredito mes, ano, lancamento.detalhes,
-						lancamento.valor
+				novoLancamento.save (erro) ->
+					throw erro if erro
 
-				if lancamento.natureza == Natureza.debito
-					novoLancamento = organizador.lancarDebito mes, ano, lancamento.comprovante,
-						lancamento.fornecedor, lancamento.detalhes, lancamento.valor
+					res.redirect '/lancamento'
 
-				console.log novoLancamento
+		salvarCredito: (req, res) ->
+			lancamento = req.body.lancamento
+			mes = lancamento.mes
+			ano = lancamento.ano
+
+			Organizador.findOne login: req.session.loginOrganizador, (erro, organizador) ->
+				novoLancamento = organizador.lancarCredito mes, ano, lancamento.detalhes,
+					lancamento.valor
 
 				novoLancamento.save (erro) ->
 					throw erro if erro
