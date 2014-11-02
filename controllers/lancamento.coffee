@@ -26,6 +26,7 @@ module.exports = (app) ->
 
 			consultaDeLancamentos.consultar mes, ano, exibirResultados
 
+		# TODO: Transformar em serviço de api
 		salvarDebito: (req, res) ->
 			lancamento = req.body.lancamento
 			mes = lancamento.mes
@@ -39,7 +40,8 @@ module.exports = (app) ->
 					throw erro if erro
 
 					res.redirect "/lancamento/#{mes}/#{ano}"
-
+					
+		# TODO: Transformar em serviço de api
 		salvarCredito: (req, res) ->
 			lancamento = req.body.lancamento
 			mes = lancamento.mes
