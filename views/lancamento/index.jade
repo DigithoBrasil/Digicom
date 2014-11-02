@@ -17,9 +17,6 @@ block content
 				tr
 					td
 						span.icon-calendar.
-						| DATA
-					td
-						span.icon-calendar.
 						| COMPROVANTE
 					td
 						span.icon-calendar.
@@ -33,12 +30,11 @@ block content
 
 			tbody
 				- if (lancamentos.length == 0)
-					td(colspan="5") Nenhum lançamento encontrado
+					td(colspan="4") Nenhum lançamento encontrado
 
 				-else
 					- each lancamento in lancamentos
 						tr
-							td= lancamento.data
 							td= lancamento.comprovante
 							td= lancamento.fornecedor
 							td= lancamento.detalhes
@@ -48,19 +44,16 @@ block content
 				tr
 					td
 					td
-					td
 					td.descricao Crédito
 					td
 						span.resultado= caixa.credito
 				tr
 					td
 					td
-					td
 					td.descricao Débito
 					td
 						span.resultado= caixa.debito
 				tr
-					td
 					td
 					td
 					td.descricao Saldo

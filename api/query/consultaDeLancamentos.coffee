@@ -40,7 +40,6 @@ ConsultaDeLancamentos =
 			cb.apply @, [resultado]
 
 converterLancamento = (lancamento) ->
-	data: moment(lancamento.data).format 'MM/YYYY'
 	natureza: lancamento.natureza
 	comprovante: if lancamento.comprovante then lancamento.comprovante else '---'
 	fornecedor: if lancamento.fornecedor then lancamento.fornecedor else '---'
